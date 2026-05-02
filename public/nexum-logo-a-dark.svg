@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 70" width="300" height="70" role="img" aria-label="Nexum Analytics">
+  <!-- ═══════════════════════════════════════
+       VARIANTE A DARK — Horizontal fondo navy
+       Uso: banners, headers dark mode, propuestas
+  ════════════════════════════════════════ -->
+
+  <rect width="300" height="70" fill="#0D1F3C" rx="8"/>
+
+  <line x1="22" y1="10" x2="22" y2="60" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+  <line x1="22" y1="10" x2="54" y2="60" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+  <line x1="54" y1="10" x2="54" y2="60" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="22" cy="10" r="6.5" fill="#0D1F3C" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="22" cy="60" r="6.5" fill="#0D1F3C" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="54" cy="10" r="6.5" fill="#0D1F3C" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="54" cy="60" r="6.5" fill="#0D1F3C" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="38" cy="35" r="4.5" fill="#2563EB"/>
+  <circle cx="38" cy="35" r="7.5" fill="#2563EB" fill-opacity="0.2"/>
+
+  <text x="76" y="38"
+    font-family="'Montserrat','Inter','Helvetica Neue',Arial,sans-serif"
+    font-weight="800" font-size="27" fill="#F9FAFB" letter-spacing="2">NEXUM</text>
+  <text x="77.5" y="55"
+    font-family="'Montserrat','Inter','Helvetica Neue',Arial,sans-serif"
+    font-weight="500" font-size="10.5" fill="#93C5FD" letter-spacing="4.8">ANALYTICS</text>
+</svg>
