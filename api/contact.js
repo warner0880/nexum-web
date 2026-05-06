@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'Nexum Analytics <onboarding@resend.dev>',
-      to: ['nexumanalyticsdata@gmail.com'],
+      to: ['frangjb00@gmail.com'],
       replyTo: correo,
       subject: `Nueva solicitud de ${negocio} — ${tipo_sistema}`,
       html: `

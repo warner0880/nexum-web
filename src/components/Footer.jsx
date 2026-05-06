@@ -63,10 +63,10 @@ export default function Footer() {
               Contacto
             </p>
             <a
-              href="mailto:contacto@nexumanalytics.com"
+              href="mailto:nexumanalyticsdata@gmail.com"
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
-              contacto@nexumanalytics.com
+              nexumanalyticsdata@gmail.com
             </a>
             <div className="flex items-center gap-4 mt-1">
               {/* LinkedIn */}

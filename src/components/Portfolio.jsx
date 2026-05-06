@@ -84,11 +84,16 @@ export default function Portfolio() {
         )}
 
         {error && (
-          <div className="text-center py-16 text-gray-400">
-            <svg className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-            </svg>
-            <p>{error}</p>
+          <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+            <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold text-navy mb-2">Próximamente</h3>
+            <p className="text-gray-500 max-w-sm mx-auto">
+              Estamos documentando nuestros primeros proyectos. ¡Vuelve pronto!
+            </p>
           </div>
         )}
 
