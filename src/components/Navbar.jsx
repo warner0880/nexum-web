@@ -70,7 +70,6 @@ export default function Navbar() {
               src="/nexum-logo-a-dark.svg"
               alt="Nexum Analytics"
               className="h-9 w-auto"
-              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </Link>
 
