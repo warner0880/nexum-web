@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 import Services from '../components/Services'
 import MisionVision from '../components/MisionVision'
 import Process from '../components/Process'
-import Portfolio from '../components/Portfolio'
+// import Portfolio from '../components/Portfolio'
 import Contact from '../components/Contact'
 
 export default function Home() {
@@ -27,8 +27,8 @@ export default function Home() {
       <Services />
       <MisionVision />
       <Process />
-      <Portfolio />
-      <Contact />
+      {/* <Portfolio /> */}
+<Contact />
     </>
   )
 }
