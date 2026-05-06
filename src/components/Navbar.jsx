@@ -17,7 +17,7 @@ export default function Navbar() {
   const isHome = location.pathname === '/'
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -47,29 +47,43 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? 'shadow-md' : 'shadow-none'
-      }`}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        backgroundColor: scrolled ? 'rgba(13, 31, 60, 0.92)' : 'rgba(13, 31, 60, 0.75)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        borderBottom: scrolled ? '1px solid rgba(37, 99, 235, 0.25)' : '1px solid rgba(255,255,255,0.06)',
+        transition: 'background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease',
+        boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.35)' : 'none',
+      }}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
           <Link to="/" className="flex items-center select-none">
             <img
               src="/nexum-logo-a-dark.svg"
               alt="Nexum Analytics"
               className="h-9 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-gray-600 hover:text-accent transition-colors"
+                style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.875rem', fontWeight: 500, transition: 'color 0.2s' }}
+                onMouseEnter={e => e.target.style.color = '#fff'}
+                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.75)'}
               >
                 {link.label}
               </a>
@@ -80,7 +94,20 @@ export default function Navbar() {
           <div className="hidden md:block">
             <button
               onClick={handleCTA}
-              className="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+              style={{
+                background: 'linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%)',
+                color: '#fff',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                padding: '0.5rem 1.1rem',
+                borderRadius: '0.5rem',
+                border: '1px solid rgba(59,130,246,0.4)',
+                cursor: 'pointer',
+                transition: 'opacity 0.2s, transform 0.15s',
+                boxShadow: '0 2px 12px rgba(37,99,235,0.35)',
+              }}
+              onMouseEnter={e => { e.target.style.opacity = '0.88'; e.target.style.transform = 'translateY(-1px)' }}
+              onMouseLeave={e => { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)' }}
             >
               Solicitar cotización
             </button>
@@ -88,7 +115,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-navy"
+            style={{ color: 'rgba(255,255,255,0.8)', padding: '0.5rem', borderRadius: '0.375rem', background: 'none', border: 'none', cursor: 'pointer' }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menú"
           >
@@ -106,20 +133,41 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4 flex flex-col gap-4">
+          <div
+            style={{
+              borderTop: '1px solid rgba(255,255,255,0.1)',
+              paddingTop: '1rem',
+              paddingBottom: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+            }}
+            className="md:hidden"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-gray-600 hover:text-accent transition-colors px-2"
+                style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontWeight: 500, padding: '0 0.5rem' }}
               >
                 {link.label}
               </a>
             ))}
             <button
               onClick={handleCTA}
-              className="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors w-full mt-2"
+              style={{
+                background: 'linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%)',
+                color: '#fff',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                padding: '0.6rem 1rem',
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                marginTop: '0.5rem',
+                boxShadow: '0 2px 12px rgba(37,99,235,0.35)',
+              }}
             >
               Solicitar cotización
             </button>
