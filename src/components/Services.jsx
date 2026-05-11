@@ -1,7 +1,7 @@
-import { useFadeIn } from '../lib/useFadeIn'
+import { motion } from 'framer-motion'
+import { fadeInUp, cardVariant, staggerContainer } from '../lib/animations'
 
 const services = [
-  // Analítica de datos
   {
     id: 'dashboards',
     category: 'Analítica de datos',
@@ -41,7 +41,6 @@ const services = [
       </svg>
     ),
   },
-  // Software a medida
   {
     id: 'pos',
     category: 'Software a medida',
@@ -84,8 +83,6 @@ const services = [
 ]
 
 export default function Services() {
-  const ref = useFadeIn()
-
   const scrollToContact = () => {
     const el = document.getElementById('contacto')
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -93,59 +90,75 @@ export default function Services() {
 
   return (
     <section id="servicios" className="py-24 bg-[#F9FAFB]">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Encabezado */}
-        <div className="text-center mb-16">
-          <h2 className="fade-in text-3xl sm:text-4xl font-extrabold text-navy mb-4">
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer(0.15)}
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
             Nuestros servicios
-          </h2>
-          <p className="fade-in fade-in-delay-1 text-gray-500 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-gray-500 max-w-xl mx-auto">
             Hacemos que tu negocio funcione mejor con tecnología — sin complicaciones, sin tecnicismos.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Grid unificado — todos los servicios en la misma escala */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <div
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={staggerContainer(0.09)}
+        >
+          {services.map((service) => (
+            <motion.div
               key={service.id}
-              className={`fade-in fade-in-delay-${(i % 3) + 1} bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-md hover:border-accent/20 transition-all duration-300 flex flex-col`}
+              variants={cardVariant}
+              whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(37,99,235,0.13)' }}
+              transition={{ duration: 0.25 }}
+              className="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:border-accent/25 transition-colors duration-300 flex flex-col cursor-default"
             >
-              {/* Categoría */}
               <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
                 {service.category}
               </span>
-              {/* Icono + Título */}
+
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 text-accent flex items-center justify-center flex-shrink-0">
+                <motion.div
+                  className="w-14 h-14 rounded-xl bg-accent/10 text-accent flex items-center justify-center flex-shrink-0"
+                  whileHover={{ rotate: [0, -8, 8, 0], scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-base font-bold text-navy leading-snug">{service.title}</h3>
               </div>
-              {/* Descripción */}
+
               <p className="text-gray-600 mb-5 leading-relaxed flex-1 text-sm">{service.description}</p>
-              {/* Tags */}
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {service.modules.map((mod) => (
-                  <span
-                    key={mod}
-                    className="text-xs font-medium bg-accent/10 text-accent px-3 py-1 rounded-full"
-                  >
+                  <span key={mod} className="text-xs font-medium bg-accent/10 text-accent px-3 py-1 rounded-full">
                     {mod}
                   </span>
                 ))}
               </div>
-              {/* CTA */}
-              <button
+
+              <motion.button
                 onClick={scrollToContact}
-                className="mt-auto w-full py-2.5 rounded-lg border-2 border-accent text-accent font-semibold text-sm hover:bg-accent hover:text-white transition-colors duration-200"
+                className="mt-auto w-full py-2.5 rounded-lg border-2 border-accent text-accent font-semibold text-sm"
+                whileHover={{ backgroundColor: '#2563EB', color: '#ffffff', scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.18 }}
               >
                 Solicitar cotización
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>

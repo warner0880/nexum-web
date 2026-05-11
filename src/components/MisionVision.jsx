@@ -1,4 +1,5 @@
-import { useFadeIn } from '../lib/useFadeIn'
+import { motion } from 'framer-motion'
+import { fadeInUp, slideInLeft, slideInRight, cardVariant, staggerContainer } from '../lib/animations'
 
 const valores = [
   {
@@ -39,33 +40,43 @@ const valores = [
 ]
 
 export default function MisionVision() {
-  const ref = useFadeIn()
-
   return (
     <section id="nosotros" className="py-24 bg-white">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Encabezado */}
-        <div className="text-center mb-16">
-          <h2 className="fade-in text-3xl sm:text-4xl font-extrabold text-navy mb-4">
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer(0.15)}
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
             Quiénes somos
-          </h2>
-          <p className="fade-in fade-in-delay-1 text-gray-500 max-w-xl mx-auto mb-3">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-gray-500 max-w-xl mx-auto mb-3">
             Una empresa colombiana construida con propósito: hacer que la tecnología trabaje
             para tu negocio, no al revés.
-          </p>
-          <p className="fade-in fade-in-delay-1 text-accent font-semibold text-base tracking-wide">
+          </motion.p>
+          <motion.p variants={fadeInUp} className="text-accent font-semibold text-base tracking-wide">
             Conectando datos con decisiones.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Cards de Misión y Visión */}
+        {/* Misión y Visión — entran desde lados opuestos */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          {/* Misión */}
-          <div className="fade-in fade-in-delay-1 relative bg-navy rounded-2xl p-8 overflow-hidden">
+          <motion.div
+            className="relative bg-navy rounded-2xl p-8 overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={slideInLeft}
+            whileHover={{ scale: 1.015, boxShadow: '0 20px 50px rgba(13,31,60,0.35)' }}
+            transition={{ duration: 0.25 }}
+          >
             <div
-              className="absolute top-0 right-0 w-48 h-48 opacity-5"
+              className="absolute top-0 right-0 w-48 h-48 opacity-5 pointer-events-none"
               style={{
                 background: 'radial-gradient(circle, #2563EB 0%, transparent 70%)',
                 transform: 'translate(30%, -30%)',
@@ -90,12 +101,19 @@ export default function MisionVision() {
                 y plataformas diseñadas a la medida de cada organización.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Visión */}
-          <div className="fade-in fade-in-delay-2 relative bg-[#F9FAFB] border border-gray-100 rounded-2xl p-8 overflow-hidden">
+          <motion.div
+            className="relative bg-[#F9FAFB] border border-gray-100 rounded-2xl p-8 overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={slideInRight}
+            whileHover={{ scale: 1.015, boxShadow: '0 20px 50px rgba(37,99,235,0.1)' }}
+            transition={{ duration: 0.25 }}
+          >
             <div
-              className="absolute top-0 right-0 w-48 h-48 opacity-10"
+              className="absolute top-0 right-0 w-48 h-48 opacity-10 pointer-events-none"
               style={{
                 background: 'radial-gradient(circle, #2563EB 0%, transparent 70%)',
                 transform: 'translate(30%, -30%)',
@@ -119,32 +137,54 @@ export default function MisionVision() {
                 puedan adoptar y replicar.
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Valores corporativos */}
-        <div className="fade-in fade-in-delay-3 mt-20">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-navy mb-2">
+        <div className="mt-20">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={staggerContainer(0.12)}
+          >
+            <motion.h3 variants={fadeInUp} className="text-2xl sm:text-3xl font-extrabold text-navy mb-2">
               Nuestros valores corporativos
-            </h3>
-            <p className="text-gray-500 text-sm max-w-lg mx-auto">
+            </motion.h3>
+            <motion.p variants={fadeInUp} className="text-gray-500 text-sm max-w-lg mx-auto">
               Los principios que guían cada decisión, cada entrega y cada relación con nuestros clientes.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={staggerContainer(0.08)}
+          >
             {valores.map((v) => (
-              <div
+              <motion.div
                 key={v.label}
-                className="p-6 rounded-xl border border-gray-100 bg-white hover:border-accent/20 hover:shadow-sm transition-all duration-200"
+                variants={cardVariant}
+                whileHover={{ y: -6, boxShadow: '0 12px 32px rgba(37,99,235,0.1)', borderColor: 'rgba(37,99,235,0.2)' }}
+                transition={{ duration: 0.22 }}
+                className="p-6 rounded-xl border border-gray-100 bg-white cursor-default"
               >
-                <div className="text-3xl mb-3">{v.icon}</div>
+                <motion.div
+                  className="text-3xl mb-3 inline-block"
+                  whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.35 }}
+                >
+                  {v.icon}
+                </motion.div>
                 <p className="font-bold text-navy text-base mb-2">{v.label}</p>
                 <p className="text-sm text-gray-500 leading-relaxed">{v.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
       </div>

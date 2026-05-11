@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
@@ -131,47 +132,65 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu */}
-        {menuOpen && (
-          <div
-            style={{
-              borderTop: '1px solid rgba(255,255,255,0.1)',
-              paddingTop: '1rem',
-              paddingBottom: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-            }}
-            className="md:hidden"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontWeight: 500, padding: '0 0.5rem' }}
-              >
-                {link.label}
-              </a>
-            ))}
-            <button
-              onClick={handleCTA}
-              style={{
-                background: 'linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%)',
-                color: '#fff',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                padding: '0.6rem 1rem',
-                borderRadius: '0.5rem',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '0.5rem',
-                boxShadow: '0 2px 12px rgba(37,99,235,0.35)',
-              }}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              style={{ overflow: 'hidden' }}
+              className="md:hidden"
             >
-              Solicitar cotización
-            </button>
-          </div>
-        )}
+              <motion.div
+                style={{
+                  borderTop: '1px solid rgba(255,255,255,0.1)',
+                  paddingTop: '1rem',
+                  paddingBottom: '1rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.75rem',
+                }}
+                initial="hidden"
+                animate="visible"
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } } }}
+              >
+                {navLinks.map((link) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontWeight: 500, padding: '0 0.5rem' }}
+                    variants={{ hidden: { opacity: 0, x: -16 }, visible: { opacity: 1, x: 0 } }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+                <motion.button
+                  onClick={handleCTA}
+                  style={{
+                    background: 'linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%)',
+                    color: '#fff',
+                    fontSize: '0.875rem',
+                    fontWeight: 600,
+                    padding: '0.6rem 1rem',
+                    borderRadius: '0.5rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    marginTop: '0.5rem',
+                    boxShadow: '0 2px 12px rgba(37,99,235,0.35)',
+                  }}
+                  variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
+                  transition={{ duration: 0.25 }}
+                >
+                  Solicitar cotización
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   )

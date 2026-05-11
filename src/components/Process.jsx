@@ -1,4 +1,5 @@
-import { useFadeIn } from '../lib/useFadeIn'
+import { motion } from 'framer-motion'
+import { fadeInUp, staggerContainer } from '../lib/animations'
 
 const steps = [
   {
@@ -59,63 +60,117 @@ const steps = [
 ]
 
 export default function Process() {
-  const ref = useFadeIn()
-
   return (
     <section id="proceso" className="py-24 bg-white">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="fade-in text-3xl sm:text-4xl font-extrabold text-navy mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer(0.15)}
+        >
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
             Cómo trabajamos
-          </h2>
-          <p className="fade-in fade-in-delay-1 text-gray-500 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-gray-500 max-w-xl mx-auto">
             Un proceso claro y predecible, desde la primera conversación hasta la entrega.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Desktop: horizontal steps */}
         <div className="hidden md:flex items-start gap-0 relative">
-          {/* Connector line — ajustado para 5 pasos (cada uno = 20%, mitad = 10%) */}
-          <div className="absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
+          {/* Base line */}
+          <motion.div
+            className="absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0 origin-left"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          />
+          {/* Accent progress line */}
+          <motion.div
+            className="absolute top-8 left-[10%] right-[10%] h-0.5 bg-accent z-0 origin-left"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
+          />
 
           {steps.map((step, i) => (
-            <div
+            <motion.div
               key={step.number}
-              className={`fade-in fade-in-delay-${i + 1} flex-1 flex flex-col items-center text-center relative z-10 px-2`}
+              className="flex-1 flex flex-col items-center text-center relative z-10 px-2"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.3 + i * 0.14, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Circle */}
-              <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white mb-5 ring-4 ring-white shadow-md">
+              <motion.div
+                className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white mb-5 ring-4 ring-white shadow-md"
+                initial={{ scale: 0, rotate: -45 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.45 + i * 0.14, type: 'spring', stiffness: 220, damping: 18 }}
+                whileHover={{ scale: 1.12, boxShadow: '0 8px 24px rgba(37,99,235,0.4)' }}
+              >
                 {step.icon}
-              </div>
+              </motion.div>
               <span className="text-4xl font-extrabold text-gray-100 absolute top-0 left-1/2 -translate-x-1/2 select-none -z-10">
                 {step.number}
               </span>
               <h3 className="text-sm font-bold text-navy mb-2">{step.title}</h3>
               <p className="text-xs text-gray-500 leading-relaxed">{step.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Mobile: vertical steps */}
         <div className="md:hidden flex flex-col gap-0 relative">
-          <div className="absolute top-8 left-8 bottom-8 w-0.5 bg-gray-200 z-0" />
+          <motion.div
+            className="absolute top-8 left-8 bottom-8 w-0.5 bg-gray-200 z-0 origin-top"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          />
+          <motion.div
+            className="absolute top-8 left-8 bottom-8 w-0.5 bg-accent z-0 origin-top"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+          />
+
           {steps.map((step, i) => (
-            <div
+            <motion.div
               key={step.number}
-              className={`fade-in fade-in-delay-${i + 1} flex gap-6 pb-10 relative z-10`}
+              className="flex gap-6 pb-10 relative z-10"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white ring-4 ring-white shadow-md">
+                <motion.div
+                  className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white ring-4 ring-white shadow-md"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.3 + i * 0.12, type: 'spring', stiffness: 240, damping: 18 }}
+                >
                   {step.icon}
-                </div>
+                </motion.div>
               </div>
               <div className="pt-3">
                 <h3 className="text-base font-bold text-navy mb-1">{step.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   )
