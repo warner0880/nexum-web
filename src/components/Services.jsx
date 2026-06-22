@@ -42,6 +42,32 @@ const services = [
     ),
   },
   {
+    id: 'estrategia',
+    category: 'Estrategia Digital',
+    title: 'Estrategia Digital a la Medida de tu Negocio',
+    description:
+      'Antes de invertir en marketing o tecnología, te damos claridad: quién es tu cliente ideal, qué canales priorizar y un plan concreto para avanzar con información, no con suposiciones.',
+    modules: ['Diagnóstico digital', 'Público objetivo definido', 'Canales prioritarios', 'Hoja de ruta clara'],
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758" />
+      </svg>
+    ),
+  },
+  {
+    id: 'publicidad',
+    category: 'Publicidad Digital',
+    title: 'Campañas Publicitarias que Generan Resultados',
+    description:
+      'Planeamos, lanzamos y optimizamos tus campañas en Meta, Google y TikTok — enfocadas en traer tráfico, clientes calificados y ventas, con ajustes constantes según los resultados.',
+    modules: ['Meta, Google y TikTok', 'Optimización continua', 'Reportes de desempeño', 'Enfocado en resultados'],
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c2.32.196 4.594.66 6.75 1.38l.527.176c.557.186 1.156-.114 1.232-.726.21-1.633.321-3.299.321-4.99 0-1.691-.111-3.357-.32-4.99-.077-.612-.677-.912-1.234-.726l-.526.175a48.948 48.948 0 0 1-6.75 1.38m0 9.18v3.27a.75.75 0 0 1-.75.75h-.375a.75.75 0 0 1-.69-.45l-.405-.943a3 3 0 0 1-.099-1.83l.299-1.005m1.02-3.882a48.587 48.587 0 0 1 6.075-1.518" />
+      </svg>
+    ),
+  },
+  {
     id: 'pos',
     category: 'Software a medida',
     title: 'Sistema de Ventas y Caja',
@@ -77,6 +103,45 @@ const services = [
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+      </svg>
+    ),
+  },
+  {
+    id: 'trading',
+    category: 'Trading Automatizado',
+    title: 'Expert Advisors para MetaTrader 5',
+    description:
+      'Automatizamos tu estrategia de trading: opera 24/7 sin decisiones emocionales, con gestión de riesgo definida y validación histórica antes de arriesgar capital real.',
+    modules: ['Backtesting incluido', 'Gestión de riesgo', 'Operación 24/7', 'Optimización de parámetros'],
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+      </svg>
+    ),
+  },
+  {
+    id: 'propuestas',
+    category: 'Servicios con IA',
+    title: 'Propuestas Comerciales que Cierran Más Ventas',
+    description:
+      'Convertimos tu oferta en una propuesta clara y profesional — con la estructura, el diseño y los argumentos que tu prospecto necesita para decir que sí.',
+    modules: ['Estructura persuasiva', 'Diseño con tu marca', 'Precios y tiempos claros', 'Mayor tasa de cierre'],
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.746 3.746 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'legal',
+    category: 'Servicios con IA',
+    title: 'Asistente Legal con IA para tu Empresa',
+    description:
+      'Revisión de contratos, redacción de documentos legales y consultas bajo el marco jurídico colombiano. Rapidez de la IA con respaldo del derecho colombiano vigente.',
+    modules: ['Contratos y NDAs', 'Habeas Data Ley 1581', 'Derecho Laboral', 'Constitución de SAS'],
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.589-1.202L18.75 4.97Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.589-1.202L5.25 4.97Z" />
       </svg>
     ),
   },
